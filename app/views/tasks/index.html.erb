@@ -1,0 +1,32 @@
+<h1 class="center" ><strong> !!    Your List Of Tasks !!  </strong></h1>
+<br>
+<h2 class="date"><%= Time.now.strftime("%m/%d/%Y")%></h2>
+<br>
+<table class = "table">
+<thead>
+<tr>
+<th scope = "col"> <strong>Title</strong> </th>
+<th scope = "col"> <strong>Description</strong> </th>
+<th scope = "col"> <strong>Deadline</strong> </th>
+<th scope = "col"> <strong>Actions</strong> </th>
+</tr>
+</thead>
+
+<tbody>
+ <% @my_tasks.each do |my_task| %>
+  <% if my_task.creation_date >Date.today %>
+    <tr>
+    <td class='title'><%= my_task.title %></td>
+    <td><%= my_task.description %></td>
+    <td><%= my_task.creation_date %></td>
+    <td><i><%= link_to 'View task', my_task , class:"links"%></i></td>
+    <td><i><%= link_to 'Delete task', my_task ,data: {turbo_method: :delete,turbo_confirm: "Are you sure  ??"}, class:"links" %></i></td>
+    <td><i><%= link_to 'Edit task details ' , edit_task_path(my_task), class: "links" %></i></td>
+    </tr>
+<%end%>
+<% end%>
+</tbody>
+</table>
+<br>
+<br>
+<h3><%= link_to 'View All Past Tasks ', '/tasks/alltask', class:"links" %>

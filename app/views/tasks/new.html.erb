@@ -1,0 +1,38 @@
+
+<h1 class="center"> <strong> CREATE NEW TASK  </strong></h1>
+<h2 class="date"><%= Time.now.strftime("%m/%d/%Y")%></h2>
+
+<br>
+
+<%= form_with model: @my_task do |form| %>
+<div>
+<%= form.label :Title, style: "display: block",class:"label-name"%>
+<%= form.text_field :title %>
+<% @my_task.errors.full_messages_for(:title).each do |message| %>
+ <div><%= message %></div>
+    <% end %>
+</div>
+<br>
+<br>
+
+<div>
+<%= form.label :Description_of_task,style: "display: block",class:"label-name"%>
+<%= form.text_area  :description %>
+<% @my_task.errors.full_messages_for(:description).each do |message| %>
+ <div><%= message %></div>
+    <% end %>
+</div>
+<br>
+<br>
+
+<div>
+<%= form.label :Deadline,style: "display: block",class:"label-name"%>
+<%= form.text_field :creation_date %>
+<% @my_task.errors.full_messages_for(:creation_date).each do |message| %>
+ <div><%= message %></div>
+    <% end %>
+</div>
+<div class = "submit-button">
+<%= form.submit %>
+</div>
+<%end %>
